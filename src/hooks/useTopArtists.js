@@ -15,7 +15,7 @@ export const useTopArtists = (genre) => {
         }
       );
       setTopArtists(res?.data?.tracks);
-      console.log("Top Art", res?.data?.tracks);
+      console.log("Top Artists:", res?.data?.tracks);
     } catch (err) {
       console.log(err);
     }
