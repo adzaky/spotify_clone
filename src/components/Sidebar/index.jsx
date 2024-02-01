@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import play from "../../assets/gravity-ui_play-fill.svg";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,72 +7,77 @@ import {
   MdHistory,
   MdMusicNote,
 } from "react-icons/md";
+import Sider from "antd/es/layout/Sider";
+import { Menu } from "antd";
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
+  const [pathname, setPathname] = useState("");
   const navigate = useNavigate();
   const listRoute = [
     {
-      path: "/dashboard",
-      title: "Dashboard",
+      key: "/dashboard",
+      label: "Dashboard",
       icon: <MdDashboard />,
     },
     {
-      path: "/top-artist",
-      title: "Top Artist",
+      key: "/top-artist",
+      label: "Top Artist",
       icon: <MdHeadsetMic />,
     },
     {
-      path: "/top-music",
-      title: "Top Music",
+      key: "/top-music",
+      label: "Top Music",
       icon: <MdMusicNote />,
     },
     {
-      path: "/recently-played",
-      title: "Recently Played",
+      key: "/recently-played",
+      label: "Recently Played",
       icon: <MdHistory />,
     },
   ];
 
+  useEffect(() => {
+    setPathname(window.location.pathname);
+    console.log(window.location.pathname);
+  }, [window.location.pathname]);
+
   return (
-    <div
-      className={`${
-        open ? "w-64 p-8" : "w-20 px-6 py-8"
-      } flex flex-col gap-y-6 duration-300 h-screen bg-[#1E1E1E] rounded-md`}
+    <Sider
+      trigger={null}
+      collapsible
+      collapsed={collapsed}
+      className={"h-full !bg-[#1E1E1E] rounded-md duration-300"}
+      width={240}
     >
       <div
-        className={`flex flex-row items-center h-8 mb-2 ${
-          open ? "justify-between" : "justify-center"
+        className={`flex flex-row items-center h-10 m-6 ${
+          !collapsed ? "justify-between" : "justify-center"
         }`}
       >
-        <h1 className={`text-3xl font-bold ${!open && "hidden"}`}>
+        <h1 className={`text-3xl font-bold ${collapsed && "hidden"}`}>
           Songfy
         </h1>
         <img
           src={play}
           alt="Play"
-          className={`size-5 cursor-pointer ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
+          className={`size-5 cursor-pointer ${collapsed && "rotate-180"}`}
+          onClick={() => setCollapsed(!collapsed)}
         />
       </div>
-      <hr />
-      <div className="flex flex-col gap-2">
-        {listRoute.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="w-full p-2 cursor-pointer hover:bg-[#0A68AB] hover:rounded-xl"
-              onClick={() => navigate(item?.path)}
-            >
-              <div className="flex gap-x-8 items-center">
-                {item?.icon}
-                {open && <h1>{item?.title}</h1>}
-              </div>
-            </div>
-          );
-        })}
+      <hr className="mx-6" />
+      <div className="mt-2">
+        <Menu
+          onClick={({ key }) => navigate(key)}
+          items={listRoute}
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={[pathname]}
+          selectedKeys={[pathname]}
+          className="bg-[#1E1E1E] font-poppins"
+        />
       </div>
-    </div>
+    </Sider>
   );
 };
 
