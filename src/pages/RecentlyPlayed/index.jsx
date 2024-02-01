@@ -1,10 +1,12 @@
-import React from 'react'
-import RecentlyPlayedFeatures from '../../features/RecentlyPlayed'
+import React from "react";
+import RecentlyPlayedFeatures from "../../features/RecentlyPlayed";
 
 const RecentlyPlayed = () => {
   return (
-    <RecentlyPlayedFeatures />
-  )
-}
+    <>
+      <RecentlyPlayedFeatures />
+    </>
+  );
+};
 
-export default RecentlyPlayed
+export default RecentlyPlayed;
