@@ -19,22 +19,22 @@ const RecentlyPlayedFeatures = () => {
     >
       <h1 className="text-2xl">Recently Played</h1>
       <div className="flex flex-wrap justify-between gap-4 mt-4 overflow-y-auto rounded-md no-scrollbar">
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <div key={index}>
             <Card
               bordered={false}
               hoverable
               cover={
                 <img
-                  alt={item.track?.artists[0].name}
-                  src={item.track?.album?.images[0].url}
+                  alt={item.track?.artists[0]?.name}
+                  src={item.track?.album?.images[0]?.url}
                 />
               }
               className="w-56"
             >
               <Meta
                 title={item.track?.name}
-                description={item.track?.album?.artists[0].name}
+                description={item.track?.album?.artists[0]?.name}
               />
             </Card>
           </div>
