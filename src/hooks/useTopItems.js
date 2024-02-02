@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_ENDPOINT } from "../helpers/endpoint";
 
 export const useTopItems = (type, limit) => {
   const [genre, setGenre] = useState([]);
@@ -7,7 +8,7 @@ export const useTopItems = (type, limit) => {
   const getItems = async () => {
     try {
       const res = await axios.get(
-        "https://api.spotify.com/v1/me/top/" + type + "?limit=" + limit,
+        `${BASE_ENDPOINT}me/top/${type}?limit=${limit}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_ENDPOINT } from "../helpers/endpoint";
 
 export const useTopArtists = (genre) => {
   const [topArtists, setTopArtists] = useState([]);
@@ -7,7 +8,7 @@ export const useTopArtists = (genre) => {
   const getTopArtists = async () => {
     try {
       const res = await axios.get(
-        "https://api.spotify.com/v1/recommendations?seed_genres=" + genre,
+        `${BASE_ENDPOINT}recommendations?seed_genres=${genre}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,

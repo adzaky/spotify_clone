@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_ENDPOINT } from "../helpers/endpoint";
 
 export const useArtistID = () => {
   const [artist, setArtist] = useState({});
@@ -7,7 +8,7 @@ export const useArtistID = () => {
   const getArtistID = async () => {
     try {
       const res = await axios.get(
-        "https://api.spotify.com/v1/search?q=" + searchInput + "&type=track&limit=18",
+        `${BASE_ENDPOINT}search?q=${searchInput}&type=track&limit=18`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
