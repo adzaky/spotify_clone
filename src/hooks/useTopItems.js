@@ -15,10 +15,9 @@ export const useTopItems = (type, limit) => {
         }
       );
       console.log("Items", res?.data?.items);
-      // Use ternary operator to conditionally set state based on type
       type === "tracks"
-        ? setTopMusics(res?.data?.items) // Set music state if type is "Musics"
-        : setGenre(res?.data?.items[0]?.genres?.join(",")); // Set genre state otherwise
+        ? setTopMusics(res?.data?.items)
+        : setGenre(res?.data?.items[0]?.genres?.join(","));
     } catch (err) {
       console.log(err);
     }
