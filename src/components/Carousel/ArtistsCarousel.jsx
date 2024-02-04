@@ -5,7 +5,7 @@ import { useTopItems } from "../../hooks/useTopItems";
 
 const ArtistsCarousel = () => {
   const { genre } = useTopItems("artists", 1);
-  const { topArtists } = useTopArtists(genre);
+  const { topArtists } = useTopArtists(genre, 10);
 
   return (
     <Carousel autoplay autoplaySpeed={5000} draggable fade>
