@@ -7,7 +7,7 @@ const LoginFeatures = () => {
 
   return (
     <>
-      <div className="h-screen flex flex-col items-center justify-center bg-[url('.\assets\loginBg.svg')] bg-cover bg-center">
+      <div className="h-screen flex flex-col items-center justify-center bg-[url('./assets/loginBg.svg')] bg-cover bg-center">
         <h1 className="text-[3.75rem] font-bold mb-4">Songfy</h1>
         <p className="font-light -mt-6">
           Discover, listen to, and enjoy millions of songs from around the
