@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  * {
     color: white;
     cursor: default;
   }
