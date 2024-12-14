@@ -1,5 +1,7 @@
+import AppRouter from "./routes";
+
 const App = () => {
-  return <div>Songfy</div>;
+  return <AppRouter />;
 };
 
 export default App;
