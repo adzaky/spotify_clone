@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useSignIn } from "./hooks/useSignIn";
+import { Button } from "@/components/ui/button";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -21,12 +22,12 @@ const SignIn = () => {
       <p className="text-center font-light lg:text-lg">
         Discover, listen to, and enjoy millions of songs from around the world.
       </p>
-      <button
+      <Button
         onClick={handleSignButton}
-        className="rounded bg-amber-800 px-8 py-2 text-sm font-medium duration-300 hover:bg-amber-700 lg:text-base"
+        className="rounded-lg bg-amber-800 px-8 py-2 text-sm font-medium duration-300 hover:bg-amber-700 lg:text-base"
       >
         {token ? "Go To Dashboard" : "Login With Spotify"}
-      </button>
+      </Button>
     </div>
   );
 };
